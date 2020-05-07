@@ -10,7 +10,7 @@ class Config():
         cfg['database']['default_connection'],
         cfg['mysql']['driver'],
         cfg['mysql']['user'],
-        cfg['mysql']['password'],
+        cfg['mysql']['kata_kunci'],
         cfg['mysql']['host'],
         cfg['mysql']['port'],
         cfg['mysql']['db']

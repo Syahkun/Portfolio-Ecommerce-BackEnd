@@ -19,7 +19,7 @@ class PaymentMethods(db.Model):
     }
 
     def __init__(self, name):
-        self.username = username
+        self.nama_pengguna = nama_pengguna
 
     def __repr__(self):
         return '<PaymentMethod %r>' % self.id

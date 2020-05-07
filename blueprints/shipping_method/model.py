@@ -15,11 +15,11 @@ class ShippingMethods(db.Model):
 
     response_fields = {
         'id': fields.Integer,
-        'courier': fields.String,
+        'courier': fields.String
     }
 
     def __init__(self, courier):
-        self.usercourier = usercourier
+        self.courier = courier
 
     def __repr__(self):
         return '<ShippingMethod %r>' % self.id

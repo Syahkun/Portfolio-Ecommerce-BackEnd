@@ -24,10 +24,10 @@ class CustomerResource(Resource):
             parser = reqparse.RequestParser()
             parser.add_argument('name', location='json', required=True)
             parser.add_argument('email', location='json', required=True)
-            parser.add_argument('province', location='json', required=True)
-            parser.add_argument('city', location='json', required=True)
+            parser.add_argument('provinsi', location='json', required=True)
+            parser.add_argument('kota', location='json', required=True)
             parser.add_argument('postal_code', location='json', required=True)
-            parser.add_argument('city_type', location='json', required=True)
+            parser.add_argument('kota_type', location='json', required=True)
             parser.add_argument('street', location='json', required=True)
             parser.add_argument('phone', location='json')
             parser.add_argument('bod', location='json')
@@ -35,7 +35,7 @@ class CustomerResource(Resource):
             args = parser.parse_args()
 
             customer = Customers(
-                args['name'], args['email'], args['province'], args['city'], args['postal_code'], args['city_type'], args['street'], args['phone'], args['bod'], claims['id'])
+                args['name'], args['email'], args['provinsi'], args['kota'], args['postal_code'], args['kota_type'], args['street'], args['phone'], args['bod'], claims['id'])
 
             db.session.add(customer)
             db.session.commit()
@@ -55,24 +55,24 @@ class CustomerResource(Resource):
                 parser = reqparse.RequestParser()
                 parser.add_argument('name', location='json')
                 parser.add_argument('email', location='json')
-                parser.add_argument('province', location='json', required=True)
-                parser.add_argument('city', location='json', required=True)
+                parser.add_argument('provinsi', location='json', required=True)
+                parser.add_argument('kota', location='json', required=True)
                 parser.add_argument('postal_code', location='json', required=True)
-                parser.add_argument('city_type', location='json', required=True)
+                parser.add_argument('kota_type', location='json', required=True)
                 parser.add_argument('street', location='json', required=True)
                 parser.add_argument('phone', location='json')
                 parser.add_argument('bod', location='json')
                 args = parser.parse_args()
                 
-                qry.username = args['name']
-                qry.username = args['email']
-                qry.username = args['province']
-                qry.username = args['city']
-                qry.username = args['postal_code']
-                qry.username = args['city_type']
-                qry.username = args['street']
-                qry.username = args['phone']
-                qry.username = args['bod']
+                qry.nama_pengguna = args['name']
+                qry.nama_pengguna = args['email']
+                qry.nama_pengguna = args['provinsi']
+                qry.nama_pengguna = args['kota']
+                qry.nama_pengguna = args['postal_code']
+                qry.nama_pengguna = args['kota_type']
+                qry.nama_pengguna = args['street']
+                qry.nama_pengguna = args['phone']
+                qry.nama_pengguna = args['bod']
             
                 db.session.commit()
 

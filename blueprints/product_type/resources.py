@@ -48,8 +48,8 @@ class ProductTypeResource(Resource):
         if qry is None:
             return {'Status ': 'Not Found'}, 404
 
-        qry.username = args['name']
-        qry.password = hash_pass
+        qry.nama_pengguna = args['name']
+        qry.kata_kunci = hash_pass
         qry.salt = salt
         db.session.commit()
 

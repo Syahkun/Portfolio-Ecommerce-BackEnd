@@ -45,8 +45,8 @@ class PaymentMethodResource(Resource):
     # @internal_required
     def patch(self, id):
         parser = reqparse.RequestParser()
-        parser.add_argument('username', location='json')
-        parser.add_argument('password', location='json')
+        parser.add_argument('nama_pengguna', location='json')
+        parser.add_argument('kata_kunci', location='json')
         args = parser.parse_args()
 
         qry = PaymentMethods.query.get(id)

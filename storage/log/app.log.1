@@ -13,7 +13,7 @@ Traceback (most recent call last):
   File "/home/alta12/Videos/E-COMMERCE/asa-ecommerce/blueprints/client/resources.py", line 34, in post
     app.logger.debug('DEBUG: %s', client)
 NameError: name 'app' is not defined
-[2020-05-03 11:15:12,369] {/home/alta12/Videos/E-COMMERCE/asa-ecommerce/blueprints/__init__.py:89} ERROR - REQUEST_LOG	{"method": "POST", "code": "500 INTERNAL SERVER ERROR", "uri": "/client?", "request": {"username": "asa", "password": "alta123", "status": "admin"}, "response": {"message": "Internal Server Error"}}
+[2020-05-03 11:15:12,369] {/home/alta12/Videos/E-COMMERCE/asa-ecommerce/blueprints/__init__.py:89} ERROR - REQUEST_LOG	{"method": "POST", "code": "500 INTERNAL SERVER ERROR", "uri": "/client?", "request": {"nama_pengguna": "asa", "kata_kunci": "alta123", "status": "admin"}, "response": {"message": "Internal Server Error"}}
 [2020-05-03 11:17:41,404] {/home/alta12/foldervenv/venvpro/lib/python3.6/site-packages/flask/app.py:1892} ERROR - Exception on /client [POST]
 Traceback (most recent call last):
   File "/home/alta12/foldervenv/venvpro/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1248, in _execute_context
@@ -36,7 +36,7 @@ Traceback (most recent call last):
     err.raise_mysql_exception(self._data)
   File "/home/alta12/foldervenv/venvpro/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
     raise errorclass(errno, errval)
-pymysql.err.IntegrityError: (1062, "Duplicate entry 'asa' for key 'username'")
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'asa' for key 'nama_pengguna'")
 
 The above exception was the direct cause of the following exception:
 
@@ -111,8 +111,8 @@ Traceback (most recent call last):
     err.raise_mysql_exception(self._data)
   File "/home/alta12/foldervenv/venvpro/lib/python3.6/site-packages/pymysql/err.py", line 109, in raise_mysql_exception
     raise errorclass(errno, errval)
-sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asa' for key 'username'")
-[SQL: INSERT INTO client (username, password, salt, status, updated_at) VALUES (%(username)s, %(password)s, %(salt)s, %(status)s, %(updated_at)s)]
-[parameters: {'username': 'asa', 'password': '713b01f70a1c3b77dec9a8c260b2c73ac142a0dc7b23d5a11fc1e00dd7c347a479a79dbbf3598950df152fdcc301bb5e4d7479802666708f10caaedaaebacc6f', 'salt': 'bf455dac0ee14994bebf7f88e340411d', 'status': 'admin', 'updated_at': None}]
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asa' for key 'nama_pengguna'")
+[SQL: INSERT INTO client (nama_pengguna, kata_kunci, salt, status, updated_at) VALUES (%(nama_pengguna)s, %(kata_kunci)s, %(salt)s, %(status)s, %(updated_at)s)]
+[parameters: {'nama_pengguna': 'asa', 'kata_kunci': '713b01f70a1c3b77dec9a8c260b2c73ac142a0dc7b23d5a11fc1e00dd7c347a479a79dbbf3598950df152fdcc301bb5e4d7479802666708f10caaedaaebacc6f', 'salt': 'bf455dac0ee14994bebf7f88e340411d', 'status': 'admin', 'updated_at': None}]
 (Background on this error at: http://sqlalche.me/e/gkpj)
-[2020-05-03 11:17:41,437] {/home/alta12/Videos/E-COMMERCE/asa-ecommerce/blueprints/__init__.py:89} ERROR - REQUEST_LOG	{"method": "POST", "code": "500 INTERNAL SERVER ERROR", "uri": "/client?", "request": {"username": "asa", "password": "alta123", "status": "admin"}, "response": {"message": "Internal Server Error"}}
+[2020-05-03 11:17:41,437] {/home/alta12/Videos/E-COMMERCE/asa-ecommerce/blueprints/__init__.py:89} ERROR - REQUEST_LOG	{"method": "POST", "code": "500 INTERNAL SERVER ERROR", "uri": "/client?", "request": {"nama_pengguna": "asa", "kata_kunci": "alta123", "status": "admin"}, "response": {"message": "Internal Server Error"}}

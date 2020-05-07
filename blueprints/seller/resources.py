@@ -8,6 +8,7 @@ from blueprints import db, app
 from sqlalchemy import desc
 # from blueprints import internal_required
 from flask_jwt_extended import create_access_token, get_jwt_identity, get_jwt_claims, jwt_required
+from blueprints.client.model import Clients
 
 bp_seller = Blueprint('seller', __name__)
 api = Api(bp_seller)
@@ -21,13 +22,17 @@ class SellerResource(Resource):
             parser = reqparse.RequestParser()
             parser.add_argument('name', location='json', required=True)
             parser.add_argument('email', location='json', required=True)
-            parser.add_argument('address', location='json')
+            parser.add_argument('provinsi', location='json')
+            parser.add_argument('kota', location='json')
+            parser.add_argument('postal_code', location='json')
+            parser.add_argument('kota_type', location='json')
+            parser.add_argument('street', location='json')
             parser.add_argument('phone', location='json')
             parser.add_argument('bank_account', location='json')
 
             args = parser.parse_args()
 
-            seller = Sellers(args['name'], args['email'], args['province'], args['city'], args['postal_code'], args['city_type'], args['street'],
+            seller = Sellers(args['name'], args['email'], args['provinsi'], args['kota'], args['postal_code'], args['kota_type'], args['street'],
                              args['phone'], args['bank_account'], claims['id'])
 
             db.session.add(seller)
@@ -46,24 +51,24 @@ class SellerResource(Resource):
                 parser = reqparse.RequestParser()
                 parser.add_argument('name', location='json')
                 parser.add_argument('email', location='json')
-                parser.add_argument('province', location='json', required=True)
-                parser.add_argument('city', location='json', required=True)
+                parser.add_argument('provinsi', location='json', required=True)
+                parser.add_argument('kota', location='json', required=True)
                 parser.add_argument('postal_code', location='json', required=True)
-                parser.add_argument('city_type', location='json', required=True)
+                parser.add_argument('kota_type', location='json', required=True)
                 parser.add_argument('street', location='json', required=True)
                 parser.add_argument('phone', location='json')
                 parser.add_argument('bank_account', location='json')
                 args = parser.parse_args()
                 
-                qry.username = args['name']
-                qry.username = args['email']
-                qry.username = args['province']
-                qry.username = args['city']
-                qry.username = args['postal_code']
-                qry.username = args['city_type']
-                qry.username = args['street']
-                qry.username = args['phone']
-                qry.username = args['bank_account']
+                qry.nama_pengguna = args['name']
+                qry.nama_pengguna = args['email']
+                qry.nama_pengguna = args['provinsi']
+                qry.nama_pengguna = args['kota']
+                qry.nama_pengguna = args['postal_code']
+                qry.nama_pengguna = args['kota_type']
+                qry.nama_pengguna = args['street']
+                qry.nama_pengguna = args['phone']
+                qry.nama_pengguna = args['bank_account']
             
                 db.session.commit()
 

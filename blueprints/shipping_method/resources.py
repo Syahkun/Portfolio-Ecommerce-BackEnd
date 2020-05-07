@@ -27,9 +27,7 @@ class ShippingMethodResource(Resource):
 
         app.logger.debug('DEBUG: %s', shipping_method)
 
-        return marshal(shipping_method, ShippingMethods.response_fields), 200, {
-                'Content-Type': 'application/json'
-            }
+        return marshal(shipping_method, ShippingMethods.response_fields), 200
 
     # semua bisa
     # @internal_required

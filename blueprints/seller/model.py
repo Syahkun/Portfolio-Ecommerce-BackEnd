@@ -12,10 +12,10 @@ class Sellers(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(30), nullable=False, unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    province = db.Column(db.String(30), nullable=False)
-    city = db.Column(db.String(30), nullable=False)
+    provinsi = db.Column(db.String(30), nullable=False)
+    kota = db.Column(db.String(30), nullable=False)
     postal_code = db.Column(db.String(30), nullable=False)
-    city_type = db.Column(db.String(30), nullable=False)
+    kota_type = db.Column(db.String(30), nullable=False)
     street = db.Column(db.String(50), nullable=False)
     phone = db.Column(db.String(15))
     bank_account = db.Column(db.String(100))
@@ -31,10 +31,10 @@ class Sellers(db.Model):
         "client_id": fields.Integer,
         'name': fields.String,
         'email': fields.String,
-        'province': fields.String,
-        'city': fields.String,
+        'provinsi': fields.String,
+        'kota': fields.String,
         'postal_code': fields.String,
-        'city_type': fields.String,
+        'kota_type': fields.String,
         'street': fields.String,
         'phone': fields.String,
         'bank_account': fields.String,
@@ -43,13 +43,13 @@ class Sellers(db.Model):
 
     }
 
-    def __init__(self, name, email, province, city, postal_code, city_type, street, phone, bank_account, client_id):
+    def __init__(self, name, email, provinsi, kota, postal_code, kota_type, street, phone, bank_account, client_id):
         self.name = name
         self.email = email
-        self.province = province
-        self.city = city
+        self.provinsi = provinsi
+        self.kota = kota
         self.postal_code = postal_code
-        self.city_type = city_type
+        self.kota_type = kota_type
         self.street = street
         self.phone = phone
         self.bank_account = bank_account
