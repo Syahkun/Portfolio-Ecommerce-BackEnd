@@ -28,6 +28,6 @@ class DevelopmentConfig(Config):
 
 
 class ProductionConfig(Config):
-    APP_DEBUG = False
-    DEBUG = False
+    APP_DEBUG = True
+    DEBUG = True
     MAX_BYTES = 10000

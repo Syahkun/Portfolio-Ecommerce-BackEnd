@@ -6,6 +6,7 @@ from .model import PaymentMethods
 from sqlalchemy import desc
 import uuid
 import hashlib
+from blueprints import admin_required, seller_required, buyer_required
 # from blueprints import internal_required
 
 bp_payment_method = Blueprint('payment_method', __name__)
@@ -15,7 +16,7 @@ api = Api(bp_payment_method)
 class PaymentMethodResource(Resource):
 
     # untuk admin saja
-    # @internal_required
+    @admin_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('name', location='json', required=True)
@@ -28,9 +29,11 @@ class PaymentMethodResource(Resource):
 
         app.logger.debug('DEBUG: %s', payment_method)
 
-        return marshal(payment_method, PaymentMethods.response_fields), 200
-
-    # @internal_required
+        return marshal(payment_method, PaymentMethods.response_fields), 
+    
+    @admin_required
+    @seller_required
+    @buyer_required
     def get(self, id=None):
         # ambil data dari database
         qry = PaymentMethods.query.get(id)
@@ -42,7 +45,7 @@ class PaymentMethodResource(Resource):
         return {'Status': 'id is gone'}, 404, {'Content-Type': 'application/json'}
 
     # untuk admin
-    # @internal_required
+    @admin_required
     def patch(self, id):
         parser = reqparse.RequestParser()
         parser.add_argument('nama_pengguna', location='json')
@@ -59,7 +62,7 @@ class PaymentMethodResource(Resource):
         return marshal(qry, PaymentMethods.response_fields), 200
 
     # untuk admin
-    # @internal_required
+    @admin_required
     def delete(self, id=None):
         if id is not None:
             qry = PaymentMethods.query.get(id)
@@ -80,7 +83,9 @@ class PaymentMethodResource(Resource):
 
 
 class PaymentMethodList(Resource):
-    # @internal_required
+    @admin_required
+    @seller_required
+    @buyer_required
     def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('p', type=int, location='args', default=1)

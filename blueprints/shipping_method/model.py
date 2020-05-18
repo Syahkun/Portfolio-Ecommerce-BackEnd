@@ -10,8 +10,8 @@ class ShippingMethods(db.Model):
     __tablename__ = "shipping_method"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     courier = db.Column(db.String(100), nullable=False, unique=True)
-    transactions = db.relationship(
-        'Transactions', backref='shipping_method', lazy=True)
+    Transaksi = db.relationship(
+        'Transaksi', backref='shipping_method', lazy=True)
 
     response_fields = {
         'id': fields.Integer,

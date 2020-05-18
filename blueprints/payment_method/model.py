@@ -10,8 +10,8 @@ class PaymentMethods(db.Model):
     __tablename__ = "payment_method"
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False, unique=True)
-    transactions = db.relationship(
-        'Transactions', backref='payment_method', lazy=True)
+    Transaksi = db.relationship(
+        'Transaksi', backref='payment_method', lazy=True)
 
     response_fields = {
         'id': fields.Integer,
@@ -19,7 +19,7 @@ class PaymentMethods(db.Model):
     }
 
     def __init__(self, name):
-        self.nama_pengguna = nama_pengguna
+        self.name = name
 
     def __repr__(self):
         return '<PaymentMethod %r>' % self.id

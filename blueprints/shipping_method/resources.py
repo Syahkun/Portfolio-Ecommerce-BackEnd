@@ -6,6 +6,7 @@ from .model import ShippingMethods
 from sqlalchemy import desc
 import uuid
 import hashlib
+from blueprints import admin_required, seller_required, buyer_required
 # from blueprints import internal_required
 
 bp_shipping_method = Blueprint('shipping_method', __name__)
@@ -13,8 +14,8 @@ api = Api(bp_shipping_method)
 
 
 class ShippingMethodResource(Resource):
-    # admin
-    # @internal_required
+    
+    @admin_required
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument('courier', location='json', required=True)
@@ -29,8 +30,7 @@ class ShippingMethodResource(Resource):
 
         return marshal(shipping_method, ShippingMethods.response_fields), 200
 
-    # semua bisa
-    # @internal_required
+   
     def get(self, id=None):
         # ambil data dari database
         qry = ShippingMethods.query.get(id)
@@ -41,8 +41,7 @@ class ShippingMethodResource(Resource):
             }
         return {'Status': 'id is gone'}, 404, {'Content-Type': 'application/json'}
 
-    # admin
-    # @internal_required
+    @admin_required
     def patch(self, id):
         parser = reqparse.RequestParser()
         parser.add_argument('courier', location='json')
@@ -57,8 +56,7 @@ class ShippingMethodResource(Resource):
 
         return marshal(qry, ShippingMethods.response_fields), 200
 
-    # admin
-    # @internal_required
+    @admin_required
     def delete(self, id=None):
         if id is not None:
             qry = ShippingMethods.query.get(id)
@@ -79,7 +77,7 @@ class ShippingMethodResource(Resource):
 
 
 class ShippingMethodList(Resource):
-    # @internal_required
+  
     def get(self):
         parser = reqparse.RequestParser()
         parser.add_argument('p', type=int, location='args', default=1)

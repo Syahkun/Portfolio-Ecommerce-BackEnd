@@ -16,8 +16,8 @@ class Pengguna(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
     
     # inisiasi hubungan fk table_pengguna ke seller dan customer
-    customers = db.relationship('Customers', backref='table_pengguna', lazy=True)
-    sellers = db.relationship('Sellers', backref='table_pengguna', lazy=True)
+    Pembeli = db.relationship('Pembeli', backref='table_pengguna', lazy=True)
+    Penjual = db.relationship('Penjual', backref='table_pengguna', lazy=True)
    
     # field yang akan ditampilkan
     response_fields ={
@@ -44,4 +44,4 @@ class Pengguna(db.Model):
       
 
     def __repr__(self):
-        return '<Client %r>'%self.id
+        return '<Pengguna %r>'%self.id
