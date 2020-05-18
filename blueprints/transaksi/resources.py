@@ -83,11 +83,9 @@ class TransactionResource(Resource):
     def delete(self, id):
         claims = get_jwt_claims()
         qry_buyer = Pembeli.query.filter_by(pengguna_id=claims['id']).first()
-        print("==========================", qry_buyer)
-        # qry_buyer_id = qry_buyer.query.get(id)
-        qry_tran = Transaksi.query.get(id)
-        qry = qry_tran.filter_by(pembeli_id=qry_buyer.id)
-        print("==========================", qry)
+        qry_trans = Transaksi.query.filter_by(pembeli_id=qry_buyer.id)
+        qry = qry_trans.filter_by(id=id).first()
+
         if qry is None:
             return {'status': 'NOT_FOUND'}, 404
         db.session.delete(qry)
