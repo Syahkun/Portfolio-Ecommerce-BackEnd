@@ -7,4 +7,5 @@ flask-script
 flask-jwt-extended
 requests
 pytest
-werkzeug
+werkzeug==0.16.0
+flask-cors
