@@ -20,7 +20,7 @@ CORS(app, origins="*", allow_headers=[
 
 @app.route("/")
 def hello():
-    return {"status": "OK"}, 200
+    return {"status": "OK DEH"}, 200
 
 def admin_required(fn):
     @wraps(fn)
