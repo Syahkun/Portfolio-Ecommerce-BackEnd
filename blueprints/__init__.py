@@ -18,6 +18,9 @@ CORS(app, origins="*", allow_headers=[
     "Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
     supports_credentials=True, intercept_exceptions=False)
 
+@app.route("/")
+def hello():
+    return {"status": "OK"}, 200
 
 def admin_required(fn):
     @wraps(fn)
